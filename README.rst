@@ -106,7 +106,7 @@ Il faudra pour cela compléter le code de la métaclass::
 3.1) Experience
 ---------------
 
-Créer une sous classe de **BaseTable** avec plusieurs attributs de classes:
+Créer une sous classe de **BaseTable** avec plusieurs attributs de classes::
 
     class FooTable(BaseTable):
         attr_a = 1
@@ -116,9 +116,10 @@ Créer une sous classe de **BaseTable** avec plusieurs attributs de classes:
         attr_e = 5
 
 
-Que contiend le paramète attributs du la method **__init__** de **MetaTable** ?
+Que contiend le paramète attributs du la method **__init_\_** de **MetaTable** ?
 
 ::
+
     {'attr_b': 2,
      '__module__': '__main__',
      'attr_a': 1,
@@ -129,7 +130,7 @@ Que contiend le paramète attributs du la method **__init__** de **MetaTable** ?
 
 On peut remarqué que les attributs sont stoqué dans un dictionnaire et donc ne sont pas ordonnée
 On peut modifier la façon dont les attribus d'une classe sont stockés en redéfinissant la méthod 
-**__prepare__** de la metaclasse::
+**__prepare_\_** de la metaclasse::
 
 
     from collections import OrderedDict
@@ -214,23 +215,23 @@ TP 2 merge de classes
 =====================
 
 En python, lors d'héritage multiple, si les deux parents définissent une même méthode, 
-un appel de cette méthode par la classe fille appellera la méthode du premier parent
+un appel de cette méthode par la classe fille appellera la méthode du premier parent::
 
-class A:
-    def foo(self):
-        print('a')
+    class A:
+        def foo(self):
+            print('a')
 
-class B:
-    def foo(self):
-        print('b')
+    class B:
+        def foo(self):
+            print('b')
 
-# La classe AB hérite de la classe A et B
-class AB(A, B):
-    pass
+    # La classe AB hérite de la classe A et B
+    class AB(A, B):
+        pass
 
 
-ab = AB()
-ab.foo()  # Affiche a
+    ab = AB()
+    ab.foo()  # Affiche a
 
 
 On souhaiterait avoir une méta-classe qui change ce comportement et pouvoir indiquer des méthodes à merger comme ceci::
